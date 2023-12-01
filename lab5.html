@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+            <title>Lab 3</title>
+            <script type="text/javascript" src="Common/webgl-utils.js"></script>
+            <script type="text/javascript" src="Common/initShaders.js"></script>
+            <script type="text/javascript" src="Common/MV.js"></script>
+            <script type="text/javascript" src="lab5.js"></script>
+            
+            <script type="x-shader/x-vertex" id="vertex-shader">
+                attribute vec4 myPosition;
+                attribute vec2 textureCoordinate;
+                varying vec2 fTextureCoordinate;
+
+                uniform mat4 matX;
+                uniform mat4 matY;
+                uniform mat4 matZ;
+                uniform mat4 tranX;
+                uniform mat4 tranY;
+                uniform mat4 scale_X;
+                uniform mat4 scale_Y;
+                varying mat4 tmp;
+                varying mat4 tmp2;
+
+                void main() {
+                    tmp = tranY * tranX * matZ * matY * matX;
+                    tmp2 = tmp * scale_Y * scale_X;
+                    gl_Position = tmp2 * myPosition;
+                    fTextureCoordinate = textureCoordinate;
+                }
+                </script>
+            
+            <script type="x-shader/x-fragment" id="fragment-shader">
+                precision mediump float;
+                varying vec2 fTextureCoordinate;
+                uniform sampler2D texMap0;
+                void main() {
+                    gl_FragColor = texture2D(texMap0, fTextureCoordinate);
+                }
+            </script>
+    </head>
+    
+    <body onload = "init()" style="margin:0px; font-family: system-ui;" onkeydown="inputDown(event);" onkeyup="inputUp(event);">
+        <div style="display: flex; gap:1rem; padding: 1rem;">
+            <canvas id="gl-canvas" width="512" height="512"></canvas><br/>
+            <div>
+                <h1>CS452 Lab 5</h1>
+                <h3>Jacob DeRosa and Jacob Desilets</h3>
+                <table>
+                    <tr>
+                        <th>Key</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td><b>x</b></td>
+                        <td>Rotate about the x axis</td>
+                    </tr>
+                    <tr>
+                        <td><b>y</b></td>
+                        <td>Rotate about the y axis</td>
+                    </tr>
+                    <tr>
+                        <td><b>z</b></td>
+                        <td>Rotate about the z axis</td>
+                    </tr><tr>
+                        <td><b>q</b></td>
+                        <td>Scale about the x axis</td>
+                    </tr>
+                    <tr>
+                        <td><b>w</b></td>
+                        <td>Scale about the y axis</td>
+                    </tr>
+                    <tr>
+                        <td><b>a</b></td>
+                        <td>Translate along the x axis</td>
+                    </tr>
+                    <tr>
+                        <td><b>s</b></td>
+                        <td>Translate along the y axis</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+    </body>
+</html>
+

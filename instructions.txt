@@ -1,0 +1,35 @@
+Lab 5: Texture Mapping
+
+For this lab, you will use the files you used in Lab 3, and add texture to the 3D shape you created in Lab 3. Please copy over your Lab 3 files, i.e., lab3.js and lab3.html to a new folder, and rename them 'lab5.js' and 'lab5.html'. Make sure to rename the linked JS file in your new lab5.html to 'lab5.js', else you will not see your new lab5.js correctly.
+
+Apply a texture of your choosing, either one that you create within the JS file or one that you load in as an image. Note: you are not allowed to use the checkerboard or image shown in class. You should create your own textures or use your own texture image. 
+
+This is a fairly open lab. You are free to choose whatever scheme you like for magnification and minification, you are free to use mipmapping if you want, and you are free to modulate your texture with a color value if you want. You are also free to use whatever texture coordinates you like. If you really wanted, you could even add lighting and shading along with texture to your shape (though this is not necessary for this lab).
+
+All faces of your 3D shape MUST be textured. You will be penalized for the absence of texture on a face.
+
+Please do not change the controls you had in Lab 3. They should be carried through to this lab. You should be able to rotate your 3D shape using the rotation matrices around the x, y, and z axes, and show different parts of your 3D shape, all of which must be textured. Please describe the controls and the implementation in the README.txt file.
+
+Please look at the last few slides of the Texture Mapping lecture to address the cross-origin resources issue.
+
+Note that while you are using the same 3D shape, you will likely have to change the vertices and index list, as you may need to duplicate a vertex if it has two different texture coordinates.
+
+Deliverable:
+Please turn in a single .zip file, 'lab5.zip'. Your work may fall in one of the two cases.
+Case 1: If your Common/ folder is in the same directory as your lab5.html, lab5.js, and README.txt files, i.e., in lab5.html, your script includes look like this:
+<script type="text/javascript" src="Common/webgl-utils.js"></script>
+<script type="text/javascript" src="Common/initShaders.js"></script>
+<script type="text/javascript" src="Common/MV.js"></script>
+then turn in a lab5.zip file containing lab5.js, lab5.html, README.txt, and the entire Common/ folder. When we unzip lab5.zip, we should see lab5.js, lab5.html, README.txt and the folder Common/, where Common/ should contain webgl-utils.js, MV.js, and initShaders.js.
+
+Case 2: If your Common/ folder is one level outside the directory containing lab5.html, lab5.js, and README.txt files, i.e., in lab5.html your script includes look like this:
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+then turn in a lab5.zip file containing lab5.js, lab5.html, and README.txt. You do not need to include the Common/ folder in this case.
+
+
+Scoring rubric (out of 20 points, scaled down to 4 points):
+1) 6 points for seeing texture on the 3D shape when the shape loads
+2) 10 points for seeing texture covering the entire 3D shape by rotating it using the controls in Lab 3.
+3) 4 points for describing the controls and implementation in the README.
